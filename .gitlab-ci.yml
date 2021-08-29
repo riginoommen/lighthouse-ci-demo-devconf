@@ -20,7 +20,8 @@ before_script:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - rm -rf node_modules
+    - curl -sL https://deb.nodesource.com/setup_4.x | bash
+    - apt-get install nodejs
     - npm install
     - npm install -g @lhci/cli
 
