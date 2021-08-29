@@ -17,28 +17,15 @@ default:
   image: cypress/browsers:node14.16.0-chrome89-ff86
 
 before_script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - curl -sL https://deb.nodesource.com/setup_4.x | bash
-    - apt-get install nodejs
+    - rm -rf node_modules
     - npm install
     - npm install -g @lhci/cli
 
 stages:          # List of stages for jobs, and their order of execution
-    - production
+  - audit
 
-production:
-    type: deploy
-    stage: production
-    image: ruby:latest
-    script:
-        - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
-    only:
-        - master
-
-audit:
-  stage: production
+build-job:       # This job runs in the build stage, which runs first.
+  stage: audit
   script:
     - echo "Compiling the code..."
     - echo "Compile complete."
