@@ -18,6 +18,7 @@ default:
 
 before_script:
     - rm -rf node_modules
+    - npm install
     - npm install -g @lhci/cli
 
 stages:          # List of stages for jobs, and their order of execution
