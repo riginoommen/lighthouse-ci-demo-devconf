@@ -27,13 +27,6 @@ before_script:
 stages:          # List of stages for jobs, and their order of execution
     - production
 
-audit:
-  stage: production
-  script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
-    - lhci autorun --upload.serverBaseUrl=$SERVER_BASE_URL --upload.token=$BUILD_TOKEN || echo "LHCI Assert did not Passed "
-
 production:
     type: deploy
     stage: production
@@ -42,3 +35,10 @@ production:
         - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
     only:
         - master
+
+audit:
+  stage: production
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+    - lhci autorun --upload.serverBaseUrl=$SERVER_BASE_URL --upload.token=$BUILD_TOKEN || echo "LHCI Assert did not Passed "
