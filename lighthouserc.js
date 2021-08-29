@@ -17,7 +17,7 @@
             "settings": {
                 "chromeFlags": "--no-sandbox --ignore-certificate-errors"
             },
-            url: ['https://www.google.com']
+            url: ['https://lighthouse-app-devconf.herokuapp.com']
         },
         assert: {
             preset: 'lighthouse:recommended'
