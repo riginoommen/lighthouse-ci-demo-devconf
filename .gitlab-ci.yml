@@ -18,7 +18,6 @@ default:
 
 before_script:
     - rm -rf node_modules
-    - npm install
     - npm install -g @lhci/cli
 
 stages:          # List of stages for jobs, and their order of execution
@@ -27,6 +26,4 @@ stages:          # List of stages for jobs, and their order of execution
 build-job:       # This job runs in the build stage, which runs first.
   stage: audit
   script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
     - lhci autorun --upload.serverBaseUrl=$SERVER_BASE_URL --upload.token=$BUILD_TOKEN || echo "LHCI Assert did not Passed "
