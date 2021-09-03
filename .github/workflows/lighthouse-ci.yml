@@ -5,6 +5,8 @@ jobs:
  Audit:
     name: Lighthouse
     runs-on: ubuntu-latest
+    env:
+      SERVER_BASE_URL: https://lighthouse-server-devconf.herokuapp.com
     steps:
       - uses: actions/checkout@v2
         with:
@@ -18,4 +20,4 @@ jobs:
           npm install -g @lhci/cli
       - name: Starts Lighthouse CI Autorun = Healthcheck + Collect + Assert + Upload
         run: |
-          lhci autorun --upload.serverBaseUrl=$SERVER_BASE_URL --upload.token=${{ secrets.BUILD_TOKEN }} || echo "LHCI Assert did not Passed "
+          lhci autorun --upload.serverBaseUrl=${{ env.SERVER_BASE_URL }} --upload.token=${{ secrets.BUILD_TOKEN }} || echo "LHCI Assert did not Passed "
