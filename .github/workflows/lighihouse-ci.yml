@@ -27,3 +27,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm i @lhci/cli
+    - run: lhci autorun --upload.serverBaseUrl=$SERVER_BASE_URL --upload.token=$BUILD_TOKEN || echo "LHCI Assert did not Passed "
