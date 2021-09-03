@@ -16,6 +16,6 @@ jobs:
       - name: Install Lighthouse CLI
         run: |
           npm install -g @lhci/cli
-      - name: Start Lighthouse Audit
+      - name: Starts Lighthouse CI Autorun = Healthcheck + Collect + Assert + Upload
         run: |
-          lhci autorun --upload.serverBaseUrl=$SERVER_BASE_URL --upload.token=$BUILD_TOKEN || echo "LHCI Assert did not Passed "
+          lhci autorun --upload.serverBaseUrl=${{ secrets.SERVER_BASE_URL }} --upload.token=${{ secrets.BUILD_TOKEN }} || echo "LHCI Assert did not Passed "
