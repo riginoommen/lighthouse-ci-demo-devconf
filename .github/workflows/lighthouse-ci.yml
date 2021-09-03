@@ -12,7 +12,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: run Lighthouse CI
+      - name: Install Lighthouse CLI
         run: |
           npm install -g @lhci/cli
+          lhci autorun --upload.serverBaseUrl=$SERVER_BASE_URL --upload.token=$BUILD_TOKEN || echo "LHCI Assert did not Passed "
+      - name: Start Lighthouse Audit
+        run: |
           lhci autorun --upload.serverBaseUrl=$SERVER_BASE_URL --upload.token=$BUILD_TOKEN || echo "LHCI Assert did not Passed "
