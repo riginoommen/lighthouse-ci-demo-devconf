@@ -14,8 +14,8 @@
     ci: {
         collect: {
             numberOfRuns: 3,
-            "settings": {
-                "chromeFlags": "--no-sandbox --ignore-certificate-errors"
+            settings: {
+                chromeFlags: "--no-sandbox --ignore-certificate-errors"
             },
             url: ['https://lighthouse-app-devconf.herokuapp.com']
         },
